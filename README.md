@@ -36,5 +36,3 @@ A stack técnica do projeto foi estruturada com foco em desempenho, acessibilida
   * **Sistemas de Layout Modernos**;
   * **Efeitos Visuais de Última Geração**.
 * **Google Fonts**;
-
----
