@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OXIGÊNIO FITNESS | Academia de Musculação</title>
+
+<style>
+    /* === 1. VARIÁVEIS E RESET (NOVO VISUAL IMPACTANTE) === */
+    @import url('<https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap>(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap)');
+
+    :root {
+        --fundo-escuro: #0a0a0a;
+        --fundo-card: #151515;
+        --verde-neon: #00ff6a;
+        --azul-eletrico: #00e5ff;
+        --cinza-claro: #d1d1d1;
+        --branco: #ffffff;
+        --borda-suave: #333333;
+        --gradiente-energia: linear-gradient(135deg, var(--verde-neon), var(--azul-eletrico));
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--fundo-escuro); color: var(--cinza-claro); line-height: 1.6; overflow-x: hidden; }
+
+    /* === 2. CABEÇALHO === */
+    header {
+        background-color: rgba(10, 10, 10, 0.95);
+        padding: 1.5rem 5%; 
+        display: flex; 
+        
+        /* 1 e 4. Muda o eixo do Flexbox para coluna. Isso empilha o logo e a navegação automaticamente */
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+        gap: 15px; /* 4. Adiciona uma margem segura e de respiro entre o título e os links */
+        
+        border-bottom: 2px solid var(--fundo-card);
+        position: sticky; 
+        top: 0; z-index: 100; 
+        backdrop-filter: blur(5px);
+    }
+
+    .logo { 
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--branco); 
+        text-decoration: none; 
+        text-transform: uppercase; 
+        letter-spacing: 2px;
+        
+        /* 1 e 5. Removemos o 'position: absolute'. Agora o logo ocupa espaço real, 
+           empurrando a navegação para baixo e impedindo qualquer sobreposição */
+        position: relative;
+        white-space: nowrap; 
+        
+        /* 2. Empilha a palavra "OXIGÊNIO" e "FITNESS" verticalmente */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1; 
+    }
+    
+    .logo span { 
+        /* 3. Mantém a cor de vermelho hemácia para a palavra FITNESS */
+        color: #8a0303; 
+        font-size: 1.1rem; 
+        letter-spacing: 6px; 
+        margin-top: 4px; 
+    }
+
+    nav ul { list-style: none; display: flex; gap: 25px; }
+    nav a { 
+        text-decoration: none; color: var(--branco); font-weight: 700; 
+        text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; 
+        transition: color 0.3s, text-shadow 0.3s; 
+    }
+    nav a:hover { color: var(--verde-neon); text-shadow: 0 0 10px rgba(0, 255, 106, 0.5); }
+
+    /* === 3. HERO (APRESENTAÇÃO) === */
+    .hero {
+        background: radial-gradient(circle at center, #1a1a1a 0%, var(--fundo-escuro) 100%);
+        text-align: center; 
+        padding: 120px 20px;
+        position: relative;
+        border-bottom: 1px solid var(--borda-suave);
+    }
+
+    /* Padrão de pontilhados no fundo para um ar mais industrial/técnico */
+    .hero::before {
+        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background-image: radial-gradient(var(--borda-suave) 1px, transparent 1px);
+        background-size: 20px 20px; opacity: 0.3; z-index: 0;
+    }
+
+    .hero-conteudo { position: relative; z-index: 1; }
+
+    .hero h1 { font-size: 4rem; margin-bottom: 20px; color: var(--branco); font-weight: 900; text-transform: uppercase; line-height: 1.1; }
+    .hero h1 span {
+        background: var(--gradiente-energia);
+        -webkit-background-clip: text;
+        background-clip: text; /* LINHA ADICIONADA PARA RESOLVER O AVISO AMARELO */
+        -webkit-text-fill-color: transparent;
+    }
+    .hero p { font-size: 1.2rem; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; color: var(--cinza-claro); font-weight: 400; }
+
+    /* === 4. O NÚCLEO DE ENERGIA (ANIMAÇÃO EXCLUSIVA) === */
+    .area-energia { margin: 50px auto 0; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+
+    .nucleo-oxigenio {
+        width: 130px; height: 130px;
+        background: var(--fundo-escuro);
+        border: 4px solid var(--verde-neon);
+        border-radius: 50%;
+        animation: pulsarNucleo 2.5s infinite alternate ease-in-out;
+        box-shadow: 0 0 20px rgba(0, 255, 106, 0.6), inset 0 0 20px rgba(0, 255, 106, 0.4);
+        display: flex; align-items: center; justify-content: center;
+    }
+    
+    .nucleo-oxigenio::after {
+        content: 'O₂'; font-size: 2.8rem; font-weight: 900; color: var(--verde-neon);
+        text-shadow: 0 0 10px var(--verde-neon);
+        transition: color 0.3s;
+    }
+
+    @keyframes pulsarNucleo {
+        0% { transform: scale(0.95); box-shadow: 0 0 10px rgba(0,255,106,0.3), inset 0 0 10px rgba(0,255,106,0.3); border-color: var(--verde-neon); }
+        100% { transform: scale(1.1); box-shadow: 0 0 40px var(--azul-eletrico), inset 0 0 40px var(--azul-eletrico); border-color: var(--azul-eletrico); }
+    }
+
+    /* === 5. SELETOR DE TREINO (CHECKBOX HACK AVANÇADO) === */
+    section { padding: 90px 5%; border-bottom: 1px solid var(--borda-suave); }
+    .titulo-secao { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--branco); font-weight: 900; text-transform: uppercase; }
+    .titulo-secao span { color: var(--verde-neon); }
+
+    input[type="radio"] { display: none; }
+
+    .botoes-treino { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+
+    .btn-treino {
+        padding: 15px 40px;
+        background-color: transparent; color: var(--branco);
+        border: 2px solid var(--borda-suave); border-radius: 5px;
+        cursor: pointer; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+        transition: all 0.3s;
+    }
+
+    .btn-treino:hover { border-color: var(--cinza-claro); }
+
+    /* Mágica do CSS: Marca o botão selecionado */
+    #treino-forca:checked ~ .botoes-treino .btn-forca,
+    #treino-cardio:checked ~ .botoes-treino .btn-cardio,
+    #treino-funcional:checked ~ .botoes-treino .btn-funcional {
+        background-color: var(--verde-neon); color: var(--fundo-escuro);
+        border-color: var(--verde-neon); box-shadow: 0 0 20px rgba(0, 255, 106, 0.4);
+        transform: scale(1.05);
+    }
+
+    .resultado-treino {
+        display: none; background-color: var(--fundo-card); padding: 40px; border-radius: 10px;
+        text-align: center; max-width: 700px; margin: 0 auto;
+        border-left: 5px solid var(--verde-neon); animation: deslizarCima 0.4s ease-out;
+    }
+
+    @keyframes deslizarCima { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .resultado-treino h3 { font-size: 1.8rem; color: var(--branco); margin-bottom: 15px; font-weight: 900; text-transform: uppercase; }
+
+    /* Mágica do CSS: Mostra o painel correto */
+    #treino-forca:checked ~ .conteiner-resultados .res-forca,
+    #treino-cardio:checked ~ .conteiner-resultados .res-cardio,
+    #treino-funcional:checked ~ .conteiner-resultados .res-funcional { display: block; }
+
+    /* === 6. PLANOS (CARDS COM EFEITO GLOW) === */
+    .grid-planos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+
+    .cartao-plano {
+        background-color: var(--fundo-card); padding: 50px 30px; border-radius: 10px;
+        text-align: center; transition: all 0.4s; position: relative; border: 1px solid var(--borda-suave);
+    }
+
+    .cartao-plano.destaque { border-color: var(--verde-neon); }
+    .cartao-plano.destaque .badge { 
+        position: absolute; top: -15px; left: 50%; transform: translateX(-50%); 
+        background: var(--verde-neon); color: var(--fundo-escuro); padding: 5px 20px; 
+        font-weight: 900; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    .cartao-plano:hover { transform: translateY(-10px); border-color: var(--verde-neon); box-shadow: 0 15px 40px rgba(0, 255, 106, 0.15); }
+
+    .cartao-plano h3 { color: var(--branco); font-size: 2rem; margin-bottom: 10px; text-transform: uppercase; font-weight: 900; }
+    .preco { font-size: 3.5rem; font-weight: 900; color: var(--verde-neon); margin: 20px 0; display: flex; justify-content: center; align-items: baseline; }
+    .preco span { font-size: 1rem; color: var(--cinza-claro); font-weight: 700; margin-left: 5px; text-transform: uppercase; }
+
+    .cartao-plano ul { list-style: none; margin-bottom: 40px; text-align: left; }
+    .cartao-plano ul li { padding: 12px 0; border-bottom: 1px solid var(--borda-suave); display: flex; align-items: center; gap: 15px; }
+    .cartao-plano ul li::before { content: '■'; color: var(--verde-neon); font-size: 0.8rem; }
+    .cartao-plano ul li.inativo { color: #666; }
+    .cartao-plano ul li.inativo::before { content: '□'; color: #666; }
+
+    .btn-assinar { 
+        display: inline-block; width: 100%; padding: 15px; background: transparent; 
+        color: var(--branco); border: 2px solid var(--verde-neon); font-weight: 900; 
+        text-transform: uppercase; text-decoration: none; border-radius: 5px; transition: all 0.3s; 
+    }
+    .btn-assinar:hover { background: var(--verde-neon); color: var(--fundo-escuro); box-shadow: 0 0 20px rgba(0, 255, 106, 0.4); }
+
+    /* === 7. RODAPÉ === */
+    footer { background-color: #050505; text-align: center; padding: 40px 20px; color: #555; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; }
+    footer span { color: var(--verde-neon); }
+
+    @media (max-width: 768px) {
+        header { flex-direction: column; gap: 20px; justify-content: center; }
+        .hero h1 { font-size: 2.8rem; }
+        .preco { font-size: 2.5rem; }
+        .logo {
+            position: static; 
+            transform: none; /* <- Remove a centralização absoluta no mobile para não quebrar o layout */
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">Oxigênio<span> Fitness</span></a>
+    <nav>
+        <ul>
+            <li><a href="#energia">A Energia</a></li>
+            <li><a href="#treinos">Seu Treino</a></li>
+            <li><a href="#planos">Planos</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="energia" class="hero">
+        <div class="hero-conteudo">
+            <h1>Exale uma <span>Energia</span><br>Diferente e Única</h1>
+            <p>Bem-vindo à Oxigênio Academia. Esqueça o básico. Nosso ambiente foi forjado para hipertrofia, resistência e foco extremo. O seu limite é apenas o nosso aquecimento.</p>
+            
+            <div class="area-energia">
+                <div class="nucleo-oxigenio"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="treinos">
+        <h2 class="titulo-secao">Escolha sua <span>Batalha</span></h2>
+        <p style="text-align:center; margin-bottom: 40px; color: #aaa;">(Clique nos botões abaixo para gerar seu foco diário usando o CSS avançado da página)</p>
+
+        <div class="seletor-interativo">
+            <input type="radio" name="treino" id="treino-forca">
+            <input type="radio" name="treino" id="treino-cardio">
+            <input type="radio" name="treino" id="treino-funcional">
+
+            <div class="botoes-treino">
+                <label for="treino-forca" class="btn-treino btn-forca">Força Bruta</label>
+                <label for="treino-cardio" class="btn-treino btn-cardio">Cardio Extremo</label>
+                <label for="treino-funcional" class="btn-treino btn-funcional">Funcional</label>
+            </div>
+
+            <div class="conteiner-resultados">
+                <div class="resultado-treino res-forca">
+                    <h3>Zona de Peso Livre</h3>
+                    <p>Direcione-se para a área de anilhas e gaiolas de agachamento. Hoje é dia de sobrecarga progressiva, barras curvadas e levantamento terra. Equipamentos de alto rendimento liberados para você bater seu PR (Recorde Pessoal).</p>
+                </div>
+
+                <div class="resultado-treino res-cardio">
+                    <h3>Alta Intensidade (HIIT)</h3>
+                    <p>Sua parada é nas esteiras curvas de velocidade e nas Air Bikes. Prepare-se para tiros curtos e intensos que vão elevar seu VO2 Máximo e fritar calorias por até 24 horas após o treino.</p>
+                </div>
+
+                <div class="resultado-treino res-funcional">
+                    <h3>Box Funcional</h3>
+                    <p>Pegue sua kettlebell, corda naval e prepare-se para caixas de salto. Um treino focado em mobilidade, explosão muscular e core, preparando seu corpo para qualquer desafio do dia a dia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planos">
+        <h2 class="titulo-secao">Faça Parte do <span>Time</span></h2>
+        <div class="grid-planos">
+            
+            <div class="cartao-plano">
+                <h3>Basic</h3>
+                <p style="color: #888; margin-bottom: 15px;">Para iniciar a mudança.</p>
+                <div class="preco">R$ 89<span>/mês</span></div>
+                <ul>
+                    <li>Musculação livre</li>
+                    <li>Acesso em horário reduzido</li>
+                    <li class="inativo">Treinamento Funcional</li>
+                    <li class="inativo">Aulas de Luta</li>
+                </ul>
+                <a href="#" class="btn-assinar">Selecionar</a>
+            </div>
+
+            <div class="cartao-plano destaque">
+                <div class="badge">Mais Escolhido</div>
+                <h3>Pro Energy</h3>
+                <p style="color: #888; margin-bottom: 15px;">A experiência completa.</p>
+                <div class="preco">R$ 129<span>/mês</span></div>
+                <ul>
+                    <li>Musculação livre (Livre Acesso)</li>
+                    <li>Treinamento Funcional</li>
+                    <li>Avaliação mensal grátis</li>
+                    <li class="inativo">Aulas de Luta</li>
+                </ul>
+                <a href="#" class="btn-assinar">Selecionar</a>
+            </div>
+
+            <div class="cartao-plano">
+                <h3>Elite</h3>
+                <p style="color: #888; margin-bottom: 15px;">Sem limites para sua meta.</p>
+                <div class="preco">R$ 189<span>/mês</span></div>
+                <ul>
+                    <li>Livre acesso 24h</li>
+                    <li>Treinamento Funcional Premium</li>
+                    <li>Acesso a todas as modalidades</li>
+                    <li>Acompanhamento com Personal</li>
+                </ul>
+                <a href="#" class="btn-assinar">Selecionar</a>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Academia Oxigênio. Desenvolvido com força e <span>CSS Puro</span> (Sem JS).</p>
+</footer>
+</body>
+</html>
